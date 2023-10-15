@@ -1,0 +1,43 @@
+<woof>
+  <http-continuations>
+    <http-continuation path="/hi/{name}" secure="false" x="46" y="55">
+      <procedure name="hello"/>
+    </http-continuation>
+    <http-continuation path="/post/{key}" secure="false" x="46" y="55">
+      <procedure name="retrievePost"/>
+    </http-continuation>
+  </http-continuations>
+  <http-inputs>
+    <http-input path="/posts" method="POST" secure="false" x="56" y="37">
+      <procedure name="storePost"/>
+    </http-input>
+  </http-inputs>
+  <templates>
+  </templates>
+  <sections>
+  </sections>
+  <procedures>
+    <procedure name="hello" resource="net.officefloor.multicloud.HelloLogic" source="Class" procedure="hello" x="242" y="53">
+      <next argument-type="">
+      </next>
+    </procedure>
+    <procedure name="retrievePost" resource="net.officefloor.multicloud.PostLogic" source="Class" procedure="retrieve" x="242" y="53">
+      <next argument-type="">
+      </next>
+    </procedure>
+    <procedure name="storePost" resource="net.officefloor.multicloud.PostLogic" source="Class" procedure="store" x="242" y="53">
+      <next argument-type="">
+      </next>
+    </procedure>
+  </procedures>
+  <securities>
+  </securities>
+  <governances>
+  </governances>
+  <resources>
+  </resources>
+  <exceptions>
+  </exceptions>
+  <starting>
+  </starting>
+</woof>

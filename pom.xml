@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>MultiCloud</name>
+	<groupId>net.officefloor.multicloud</groupId>
+	<artifactId>MultiCloud</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<properties>
+		<officefloor-version>3.41.0</officefloor-version>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>net.officefloor</groupId>
+				<artifactId>bom</artifactId>
+				<version>${officefloor-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<modules>
+		<module>Application</module>
+		<module>Google</module>
+	</modules>
+</project>
