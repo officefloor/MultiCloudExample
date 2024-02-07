@@ -3,32 +3,34 @@ package net.officefloor.multicloud;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import net.officefloor.cabinet.spi.CabinetManager;
+import net.officefloor.cloud.test.CloudTest;
+import net.officefloor.cloud.test.OfficeFloorCloudProviders;
 import net.officefloor.plugin.clazz.Dependency;
 import net.officefloor.server.http.HttpMethod;
 import net.officefloor.server.http.HttpStatus;
 import net.officefloor.server.http.mock.MockHttpResponse;
 import net.officefloor.server.http.mock.MockHttpServer;
-import net.officefloor.woof.mock.MockWoofServerExtension;
+import net.officefloor.woof.mock.MockWoofServer;
 
+@ExtendWith(OfficeFloorCloudProviders.class)
 public class RunApplicationTest {
 
-	private final @RegisterExtension MockWoofServerExtension server = new MockWoofServerExtension();
+	private @Dependency MockWoofServer server;
 
 	private @Dependency CabinetManager cabinetManager;
 
 	private @Dependency Repository repository;
 
-	@Test
+	@CloudTest
 	public void ensureApplicationAvailable() throws Exception {
 		MockHttpResponse response = this.server.send(MockHttpServer.mockRequest("/hi/UnitTest"));
 		response.assertResponse(200, "{\"message\":\"Hello UnitTest\"}", "content-type", "application/json");
 	}
 
-	@Test
+	@CloudTest
 	public void repository() throws Exception {
 
 		// Store post entity
@@ -42,7 +44,7 @@ public class RunApplicationTest {
 		assertNotNull(document, "Should have entity");
 	}
 
-	@Test
+	@CloudTest
 	public void retrieve() throws Exception {
 
 		// Store post entity
@@ -55,7 +57,7 @@ public class RunApplicationTest {
 		response.assertJson(200, post);
 	}
 
-	@Test
+	@CloudTest
 	public void store() throws Exception {
 
 		// Create the post
